@@ -1,0 +1,46 @@
+<app-not-found [visible]="!food" notFoundMessage="Product Not Found !" resetLinkRoute="Go to Homepage"></app-not-found>
+
+<div *ngIf="food" class="container">
+    <img [src]="food.imageUrl" [alt]="food.name">
+
+    <div class="details">
+        <div class="header">
+            <span class="name">
+                {{food.name}}
+            </span>
+            <span class="favorite {{food.favorite?'':'not'}}">
+                ♥
+            </span>
+        </div>
+
+        <div class="star">
+            <!-- <igc-rating value="ratingVal" min="1" max="5"></igc-rating> -->
+        </div>
+
+        <div class="origins">
+            <span *ngFor="let origins of food.origins">
+                {{origins}}
+            </span>
+        </div>
+
+        <div class="tag">
+            <app-tags [foodPageTags]="food.tags" justifyContent="star"></app-tags>
+        </div>
+
+        <div class="cook-time">
+            <span>
+                Time to Cook about <strong>{{food.cookTime}} Minutes</strong>
+            </span>
+        </div>
+        <div class="price">
+            <span>
+                {{food.price | currency:"&#8377;"}}
+            </span>
+        </div>
+
+        <div class="buttons">
+            <button (click)="addToCart()">Add to cart</button>
+            <button (click)="buyNow()"> buy now</button>
+        </div>
+
+    </div>

@@ -1,0 +1,31 @@
+<app-serach></app-serach>
+<app-tags></app-tags>
+<app-not-found [visible]="!foods || foods.length <= 0"></app-not-found>
+<ul>
+    <li *ngFor="let food of foods">
+        <a routerLink="/food/{{food.id}}">
+            <img src="{{food.imageUrl}}" alt="food images">
+            <div class="content">
+                <div class="name">
+                    {{food.name}}
+                </div>
+                <span class="favorite {{food.favorite?'':'not'}}">♥</span>
+                <!-- <igc-rating value={{food.star}} min="1" max="5"></igc-rating> -->
+                <div class="product-item-footer">
+                    <div class="origins">
+                        <span *ngFor="let origin of food.origins">
+                            {{origin}}
+                        </span>
+                    </div>
+                    <div class="cook-time">
+                        <span>🕑</span>
+                        {{food.cookTime}}
+                    </div>
+                </div>
+                <div class="price">
+                    {{food.price | currency:"&#8377;"}}
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>

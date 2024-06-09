@@ -1,0 +1,12 @@
+
+<header>
+    <div class="container">
+        <span><img src="../../assets/logo.png" alt="logo"> </span>
+        <span> <a href="#" routerLink="/" class="title">Rest Foodies</a> </span>
+    </div>
+    <div class="links">
+      <a routerLink="/cartpage">Cart</a>
+      <a *ngIf="!isLoggedIn()" routerLink="/login">Login</a>
+    </div>
+    
+</header>

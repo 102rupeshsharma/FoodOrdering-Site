@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="deleveryAddress">
+    <div class="header">
+      <span class="number">2</span>
+      <span class="heading">DELIVERY ADDRESS</span>
+    </div>
+    
+    <ng-container *ngIf="isEditing; else summaryView">
+      <form #checkoutForm="ngForm" (ngSubmit)="submitOrder(checkoutForm)">
+        <div class="sub_container">
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="username" type="text" pInputText [(ngModel)]="username" name="username" required />
+              <label for="username">Name</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="phone" type="text" pInputText [(ngModel)]="phone" name="phone" required pattern="[0-9]{10}" />
+              <label for="phone">10 digit mobile number</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="pincode" type="text" pInputText [(ngModel)]="pincode" name="pincode" required />
+              <label for="pincode">Pincode</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="locality" type="text" pInputText [(ngModel)]="locality" name="locality" required />
+              <label for="locality">Locality</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="textarea">
+            <p-floatLabel>
+              <textarea id="summary" rows="5" cols="30" pInputTextarea [(ngModel)]="summary" name="summary"></textarea>
+              <label for="summary">Summary</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="city" type="text" pInputText [(ngModel)]="city" name="city" required />
+              <label for="city">City/District/Town</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="state" type="text" pInputText [(ngModel)]="state" name="state" required />
+              <label for="state">State</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="landMark" type="text" pInputText [(ngModel)]="landMark" name="landMark" />
+              <label for="landMark">Land Mark (optional)</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="alternate" type="text" pInputText [(ngModel)]="alternate" name="alternate" />
+              <label for="alternate">Alternate Phone(optional)</label>
+            </p-floatLabel>
+          </div>
+        </div>
+        <div class="btn">
+          <button class="submit" type="submit">SAVE AND DELIVER HERE</button>
+          <button class="cancel" type="button" (click)="cancel()">CANCEL</button>
+        </div>
+      </form>
+    </ng-container>
+
+    <ng-template #summaryView >
+      <div class="summaryView">
+        <div class="summaryContent">
+          <div>{{username}} - {{phone}}</div>
+          <div>{{formatAddress()}}</div>
+        </div>
+        
+        <button class="submit" [disabled]="isEditing">DELIVER HERE</button>
+
+        <div class="edit-btn-container">
+          <button class="edit" (click)="edit()">Edit</button>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
